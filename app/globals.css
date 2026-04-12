@@ -10,3 +10,201 @@ body {
   @apply bg-bg text-text antialiased bg-glow min-h-screen;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
 }
+
+/* Markdown lecture — base (legacy / shared) */
+.lecture-markdown {
+  line-height: 1.65;
+}
+
+/* Premium reading column — typography & rhythm */
+.lecture-markdown--reader {
+  --reader-text: #e8e4fc;
+  --reader-muted: #b8b0d4;
+  --reader-quote-bg: rgba(20, 18, 34, 0.55);
+  --reader-callout-bg: rgba(22, 20, 38, 0.75);
+  --reader-callout-border: rgba(255, 255, 255, 0.08);
+  font-size: clamp(1.0625rem, 2.8vw, 1.125rem);
+  line-height: 1.75;
+  color: var(--reader-text);
+  letter-spacing: 0.01em;
+}
+
+.lecture-markdown--reader-skeleton {
+  min-height: 8rem;
+  padding: 1.5rem 0;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+
+.lecture-markdown--reader > *:first-child {
+  margin-top: 0;
+}
+
+.lecture-markdown--reader h1 {
+  margin: 0 0 2.25rem;
+  font-size: clamp(1.75rem, 5vw, 2.125rem);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  color: #f2efff;
+}
+
+.lecture-markdown--reader h2 {
+  margin: 3.25rem 0 1.25rem;
+  padding: 0 0 0.65rem;
+  font-size: clamp(1.2rem, 3.2vw, 1.35rem);
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: -0.015em;
+  color: #f0ecff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.lecture-markdown--reader h2:first-of-type {
+  margin-top: 0.5rem;
+}
+
+.lecture-markdown--reader h3 {
+  margin: 2.5rem 0 0.85rem;
+  font-size: clamp(1.05rem, 2.6vw, 1.15rem);
+  font-weight: 600;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: #ebe6ff;
+}
+
+.lecture-markdown--reader h4 {
+  margin: 2rem 0 0.65rem;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.45;
+  color: #e4dff8;
+}
+
+.lecture-markdown--reader h2.lecture-markdown-h2--exam,
+.lecture-markdown--reader h2.lecture-markdown-h2--summary {
+  margin-top: 3.5rem;
+  margin-bottom: 1.35rem;
+  padding: 1rem 1.15rem 1rem 1.2rem;
+  font-size: clamp(1.08rem, 2.8vw, 1.22rem);
+  border-bottom: none;
+  border-radius: 0.5rem;
+  background: var(--reader-callout-bg);
+  border: 1px solid var(--reader-callout-border);
+  border-left: 3px solid rgba(168, 160, 197, 0.36);
+}
+
+.lecture-markdown--reader h2.lecture-markdown-h2--exam {
+  border-left-color: rgba(168, 160, 197, 0.45);
+}
+
+.lecture-markdown--reader h2.lecture-markdown-h2--summary {
+  border-left-color: rgba(168, 160, 197, 0.26);
+}
+
+.lecture-markdown--reader p {
+  margin: 0 0 1.35em;
+  color: rgba(232, 228, 252, 0.9);
+  max-width: 100%;
+}
+
+.lecture-markdown--reader ul,
+.lecture-markdown--reader ol {
+  margin: 0 0 1.5em;
+  padding-left: 1.35em;
+  color: rgba(232, 228, 252, 0.88);
+}
+
+@media (min-width: 640px) {
+  .lecture-markdown--reader ul,
+  .lecture-markdown--reader ol {
+    padding-left: 1.5em;
+  }
+}
+
+.lecture-markdown--reader li {
+  margin: 0 0 0.65em;
+  padding-left: 0.15em;
+}
+
+.lecture-markdown--reader li:last-child {
+  margin-bottom: 0;
+}
+
+.lecture-markdown--reader li > ul,
+.lecture-markdown--reader li > ol {
+  margin-top: 0.55em;
+  margin-bottom: 0.35em;
+}
+
+.lecture-markdown--reader a {
+  @apply text-accent underline-offset-[3px] hover:underline;
+}
+
+.lecture-markdown--reader code {
+  font-size: 0.9em;
+  padding: 0.12em 0.35em;
+  border-radius: 0.3rem;
+  background: rgba(11, 10, 19, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: #d4ccf0;
+}
+
+.lecture-markdown--reader pre {
+  margin: 0 0 1.75em;
+  padding: 1rem 1.15rem;
+  overflow-x: auto;
+  font-size: 0.85em;
+  line-height: 1.65;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 10, 19, 0.88);
+  color: var(--reader-muted);
+}
+
+.lecture-markdown--reader pre code {
+  padding: 0;
+  font-size: inherit;
+  border: none;
+  background: transparent;
+  color: inherit;
+}
+
+.lecture-markdown--reader blockquote {
+  margin: 1.85rem 0;
+  padding: 1rem 1.15rem 1rem 1.35rem;
+  border-left: 3px solid rgba(168, 160, 197, 0.42);
+  border-radius: 0 0.45rem 0.45rem 0;
+  background: var(--reader-quote-bg);
+  color: #c9c2e4;
+  font-style: italic;
+}
+
+.lecture-markdown--reader blockquote p {
+  margin-bottom: 0.85em;
+  color: inherit;
+}
+
+.lecture-markdown--reader blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.lecture-markdown--reader hr {
+  height: 0;
+  margin: 2.75rem 0;
+  padding: 0;
+  border: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+  background: none;
+}
+
+.lecture-markdown--reader strong {
+  font-weight: 600;
+  color: #f4f1ff;
+}
+
+.lecture-markdown--reader img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 0.45rem;
+}

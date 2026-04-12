@@ -15,6 +15,7 @@ create table if not exists lectures (
   lecture_date date not null,
   generated_title text not null,
   short_description text,
+  error_message text,
   status text not null default 'uploaded' check (status in ('uploaded','processing','ready','error')),
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
@@ -25,7 +26,9 @@ create table if not exists lecture_summaries (
   full_summary text,
   main_outline text,
   key_points jsonb not null default '[]'::jsonb,
+  tags jsonb not null default '[]'::jsonb,
   mentions jsonb not null default '[]'::jsonb,
+  interesting_notes jsonb not null default '[]'::jsonb,
   created_at timestamptz not null default now(),
   updated_at timestamptz not null default now()
 );
@@ -33,9 +36,10 @@ create table if not exists lecture_summaries (
 create table if not exists lecture_files (
   lecture_id uuid primary key references lectures(id) on delete cascade,
   file_name text not null,
-  file_type text not null default 'srt',
+  file_type text not null default 'txt',
   file_url text,
   raw_text text,
+  clean_text text,
   created_at timestamptz not null default now()
 );
 

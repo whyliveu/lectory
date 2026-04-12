@@ -3,8 +3,14 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
 const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn("Supabase env variables are missing. Add them to .env.local");
+function isValidSupabaseEnv(url: string | undefined, anonKey: string | undefined) {
+  return Boolean(url && anonKey && url.startsWith("http"));
 }
 
-export const supabase = createClient(supabaseUrl ?? "", supabaseAnonKey ?? "");
+export function getSupabaseClient() {
+  if (!isValidSupabaseEnv(supabaseUrl, supabaseAnonKey)) {
+    return null;
+  }
+
+  return createClient(supabaseUrl!, supabaseAnonKey!);
+}
